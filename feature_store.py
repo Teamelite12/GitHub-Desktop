@@ -1,19 +1,38 @@
-# BUGGY VERSION
-# Tries to implement a simple in-memory feature flag store but has logic errors.
+# FIXED VERSION
+"""
+Simple in-memory feature flag store.
 
-_flags = {}
+Improvements:
+- Added get with default False (no KeyError).
+- Added list + batch set feature (new feature).
+- Reduced duplication (tech debt).
+- Added type hints & docstrings.
+"""
 
-def enable(name):
-    _flags[name] = True
+from typing import Dict, Iterable
 
-def disable(name):
-    _flags[name] = False
+_flags: Dict[str, bool] = {}
 
-def is_enabled(name):
-    return _flags[name]  # KeyError if missing
+def set_flag(name: str, value: bool) -> None:
+    _flags[name] = value
 
-def toggle(name):
-    if _flags[name] == True:
-        _flags[name] = False
-    else:
-        _flags[name] = True
+def enable(name: str) -> None:
+    set_flag(name, True)
+
+def disable(name: str) -> None:
+    set_flag(name, False)
+
+def is_enabled(name: str) -> bool:
+    return _flags.get(name, False)
+
+def toggle(name: str) -> bool:
+    new_val = not is_enabled(name)
+    set_flag(name, new_val)
+    return new_val
+
+def batch_set(pairs: Iterable[tuple[str, bool]]) -> None:
+    for k, v in pairs:
+        set_flag(k, v)
+
+def list_flags() -> Dict[str, bool]:
+    return dict(_flags)

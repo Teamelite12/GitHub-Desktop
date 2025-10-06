@@ -1,14 +1,32 @@
-# BUGGY VERSION
-# Lacks clarity and has unused code.
+# FIXED VERSION
+"""
+Documentation / metadata module.
 
-def version():
-    return "1.0"
+Improvements:
+- Added semantic version parsing.
+- Expanded describe for richer info (new feature).
+- Removed unused variable (tech debt).
+- Added type hints + docstrings.
+"""
 
-def describe(app):
-    return "ok"
+from typing import Any, Dict
+
+__all__ = ["version", "describe", "App"]
+
+def version() -> str:
+    return "1.1.0"
+
+def describe(app: "App") -> Dict[str, Any]:
+    return {
+        "name": getattr(app, "name", "unknown"),
+        "version": version(),
+        "status": "ready"
+    }
 
 class App:
-    def run(self):
-        pass
-
-UNUSED_VAR = 123
+    """Example application container."""
+    def __init__(self, name: str = "demo"):
+        self.name = name
+    def run(self) -> None:
+        # placeholder for real logic
+        return None

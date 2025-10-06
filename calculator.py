@@ -1,15 +1,23 @@
-# BUGGY VERSION
-def add(a, b):
-    return a - b  # bug: should be addition
+# FIXED VERSION
+"""
+Calculator utilities.
 
-def divide(a, b):
-    return a / b  # no zero check
+Improvements:
+- Fixed add bug.
+- Safe divide with ZeroDivisionError handling.
+- Added type hints.
+- Removed side-effect print.
+"""
 
-def sum_list(nums):
-    total = 0
-    for n in nums:
-        total += n
-    return total
+from typing import Iterable
 
-# prints on import (bad practice)
-print("Loaded calc")
+def add(a: float, b: float) -> float:
+    return a + b
+
+def divide(a: float, b: float) -> float:
+    if b == 0:
+        raise ZeroDivisionError("b must not be zero")
+    return a / b
+
+def sum_list(nums: Iterable[float]) -> float:
+    return sum(nums)
