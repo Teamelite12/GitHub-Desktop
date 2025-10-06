@@ -1,13 +1,26 @@
-# BUGGY VERSION
-# Minimal tests, missing edge cases, no assertions for exceptions.
+# FIXED VERSION
+"""
+Improved test coverage:
+- Correct expectations.
+- Tests error path.
+- Parametrized style (manual loop to stay simple).
+"""
 
 from calculator import add, divide, sum_list
+import pytest
 
 def test_add():
-    assert add(2, 2) == 5  # wrong expectation
+    cases = [(2, 2, 4), (5, -2, 3), (0, 0, 0)]
+    for a, b, exp in cases:
+        assert add(a, b) == exp
 
-def test_div():
-    divide(4,0)  # should test zero division
+def test_divide_normal():
+    assert divide(8, 2) == 4
 
-def test_sum():
-    assert sum_list([1,2,3]) == 7
+def test_divide_zero():
+    with pytest.raises(ZeroDivisionError):
+        divide(1, 0)
+
+def test_sum_list():
+    assert sum_list([1, 2, 3, 4]) == 10
+    assert sum_list([]) == 0
