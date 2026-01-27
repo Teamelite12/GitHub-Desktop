@@ -1,0 +1,40 @@
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+
+jobs:
+  ok-1: { runs-on: ubuntu-latest, steps: [{ run: "echo ok-1" }] }
+  ok-2: { runs-on: ubuntu-latest, steps: [{ run: "echo ok-2" }] }
+  ok-3: { runs-on: ubuntu-latest, steps: [{ run: "echo ok-3" }] }
+  ok-4: { runs-on: ubuntu-latest, steps: [{ run: "echo ok-4" }] }
+  ok-5: { runs-on: ubuntu-latest, steps: [{ run: "echo ok-5" }] }
+
+  fail-1: { runs-on: ubuntu-latest, steps: [{ run: "echo fail-1 && exit 1" }] }
+  fail-2: { runs-on: ubuntu-latest, steps: [{ run: "echo fail-2 && exit 1" }] }
+  fail-3: { runs-on: ubuntu-latest, steps: [{ run: "echo fail-3 && exit 1" }] }
+  fail-4: { runs-on: ubuntu-latest, steps: [{ run: "echo fail-4 && exit 1" }] }
+  fail-5: { runs-on: ubuntu-latest, steps: [{ run: "echo fail-5 && exit 1" }] }
+
+  skip-1:
+    if: ${{ false }}
+    runs-on: ubuntu-latest
+    steps: [{ run: "echo skip-1" }]
+  skip-2:
+    if: ${{ false }}
+    runs-on: ubuntu-latest
+    steps: [{ run: "echo skip-2" }]
+  skip-3:
+    if: ${{ false }}
+    runs-on: ubuntu-latest
+    steps: [{ run: "echo skip-3" }]
+  skip-4:
+    if: ${{ false }}
+    runs-on: ubuntu-latest
+    steps: [{ run: "echo skip-4" }]
+  skip-5:
+    if: ${{ false }}
+    runs-on: ubuntu-latest
+    steps: [{ run: "echo skip-5" }]
