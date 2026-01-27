@@ -36,3 +36,5 @@ def batch_set(pairs: Iterable[tuple[str, bool]]) -> None:
 
 def list_flags() -> Dict[str, bool]:
     return dict(_flags)
+
+A Change
