@@ -1,0 +1,19 @@
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+
+jobs:
+  required_check_one:
+    name: required-check-1
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "required-check-1"
+
+  required_check_two:
+    name: required-check-2
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "required-check-2"
