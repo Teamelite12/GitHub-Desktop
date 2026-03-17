@@ -1,4 +1,3 @@
-# FIXED VERSION
 """
 Calculator utilities.
 
