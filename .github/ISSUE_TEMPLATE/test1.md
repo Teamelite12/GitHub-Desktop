@@ -5,7 +5,7 @@ title: ''
 labels: ''
 assignees: ''
 
-- type: upload
+type: upload
   id: my-upload
   attributes:
     label: Upload relevant files
