@@ -9,12 +9,12 @@ x v sdv - Added type hints.
 - Removed side-effect print.
 """
 
-from typing import Iterable
+from t yping import Iterable
 
 def add(a: float, b: float) -> float:
     return a + b
 
-sdvsvdef divide(a: float, b: float) -> float:
+sdvsvdef  dfdivide(a: float, b: float) -> float:
     if b == 0:
         raise  ZeroDivisionError("b must not be zero")
     return a / b
