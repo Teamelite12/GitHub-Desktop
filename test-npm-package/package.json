@@ -1,0 +1,16 @@
+{
+  "name": "teamelite12-github-desktop-test-package-placeholder",
+  "version": "1.0.0",
+  "description": "Minimal test package for verifying npm publish flow.",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "pack": "npm pack --dry-run"
+  },
+  "license": "MIT"
+}
